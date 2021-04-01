@@ -147,13 +147,12 @@ namespace Restaurante.solution
         }
 
 
-        /* CASO 6 El tipo de venta no corresponde con el regitrado en el producto
+        /* CASO 7 El tipo de venta no corresponde con el regitrado en el producto
        * HU1. ENTRADA DE PRODUCTO (1.5)
        * COMO USUARIO QUIERO REGISTRAR LA ENTRADA PRODUCTOS 
        * CRITERIOS DE ACEPTACIÓN
        *    1.  En caso de un producto sencillo la cantidad de la salida se le disminuir� 
               a la cantidad existente del producto.
-        
          DADO: EL CLIENTE DILIGENCIA uda salida de 100 ENTRADAS AL SISTEMAS
              PRODUCTO: idProduct: 0001, name: "Salchicha",cost: 1200, price: 2000,utilidad: "combo"
             CUANDO: VA A RETIRAR UNA CANTIDAD 101

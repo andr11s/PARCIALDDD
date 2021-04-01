@@ -19,12 +19,12 @@ namespace Restaurante.domain
         public decimal Cost { get;}
         public decimal Price { get;}
 
-        public virtual string Registrar(decimal Cantidad)
+        public virtual string Registrar(int Cantidad)
         {
             return "";
         }
 
-        public virtual string Retirar(decimal cantidad)
+        public virtual string Retirar(int cantidad)
         {
             return "";
         }

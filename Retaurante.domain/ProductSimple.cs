@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Retaurante.domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,9 @@ namespace Restaurante.domain
 {
     public class ProductSimple : Product
     {
+        public readonly List<Inventory> _inventario;
 
-        private decimal Cantidad { get; set; }
+        public int Cantidad { get; set; }
         private string Utilidad { get;set; }
         string Estado { get; set; }
         private decimal CostoProducto { get; set; }
@@ -18,11 +20,12 @@ namespace Restaurante.domain
             Cantidad = 0;
             Utilidad = utilidad;
             Estado = "nodisponible";
+            _inventario = new List<Inventory>();
         }
 
       
 
-        public override string Registrar(decimal cantidadRegistro)
+        public override string Registrar(int cantidadRegistro)
         {
             if (cantidadRegistro > 0)
             {
@@ -30,11 +33,14 @@ namespace Restaurante.domain
                 Estado = "Disponible";
                 return $"el registro del producto: {Name} fue realizado, cantidad: {cantidadRegistro}";
             }
+
+            _inventario.Add(new Inventory(cantidadRegistro, Name, Cost, Price, Utilidad));
+
             return "la cantidad de registro es incorrecta";
 
         }
 
-        public override string Retirar(decimal cantidadRegistro)
+        public override string Retirar(int cantidadRegistro)
         {
             if (Estado.Equals("nodisponible"))
             {
@@ -64,7 +70,9 @@ namespace Restaurante.domain
                 Estado = "nodisponible";
             }
 
+            
             Cantidad -= cantidadRegistro;
+            _inventario.Add(new Inventory(Cantidad, Name, Cost, PrecioVenta, Utilidad));
             return $"El producto: {Name} se le resto la cantidad: {cantidadRegistro}, cantidad restante: {Cantidad}";
         }
 
